@@ -1,6 +1,6 @@
 <h1>Pokémon Raid Helper</h1>
 
-This web application was built to help determine which Pokémon one should for raids in Pokémon Scarlet & Violet.
+This web application was built to help determine which Pokémon one should use for raids in Pokémon Scarlet & Violet.
 
 <h2>How To Use</h2>
 
