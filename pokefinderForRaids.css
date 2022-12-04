@@ -65,7 +65,7 @@ label {
     margin-right: 12px;
 }
 .result-container {
-    flex: 20%;
+    /*flex: 20%;*/
     flex-grow: 0;
     display: block;
     background-color: #333;
