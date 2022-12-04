@@ -1,5 +1,6 @@
 Issues:
 - Add warnings for certain abilities that can brick raids, such as Competitive
+- Pokemon added to your team should support multiple offensive types (ie their Tera type shouldn't necessarily determine whether or not they're effective against a pokemon)
 
 Names?:
 - PKMN Scarlet & Violet: Team Builder for Raids
