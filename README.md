@@ -24,6 +24,6 @@ Once you've added Pokémon to your team, you can go to the Raid Finder and deter
 
 The Team Builder stores Pokémon via Cookies. Wiping Cookies for this web application will thus wipe any Pokémon added to your team. 
 
-This application was built by myself at:
-https://github.com/RocketLuke
-https://www.twitch.tv/adamantcloud
+This application was built by myself:
+- https://github.com/RocketLuke
+- https://www.twitch.tv/adamantcloud
