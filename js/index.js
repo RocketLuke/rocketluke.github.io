@@ -475,19 +475,24 @@ function refreshCurrentTeamContainer() {
     for (let i = 0; i < pokemonTeamList.length; i++) {
         const pokemonResult = pokemonTeamList[i];
 
-        let htmlDisplay = '<div class="result-container">';
-        htmlDisplay += '<div class="result-field-container"><label class="results-label">Pok&eacute;mon:</label><div class="results-value center">' + pokemonResult.name + '</div></div>';
-        htmlDisplay += '<div class="result-field-container"><label class="results-label">Offensive/Tera Type:</label><div class="results-value center">' + pokemonResult.teraType + '</div></div>';
+        if (masterPokemonList[pokemonResult.name] != null) {
+            let htmlDisplay = '<div class="result-container">';
+            htmlDisplay += '<div class="result-field-container"><label class="results-label">Pok&eacute;mon:</label><div class="results-value center">' + pokemonResult.name + '</div></div>';
+            htmlDisplay += '<div class="result-field-container"><label class="results-label">Offensive/Tera Type:</label><div class="results-value center">' + pokemonResult.teraType + '</div></div>';
 
-        const defensiveType1 = masterPokemonList[pokemonResult.name].type1;
-        const defensiveType2 = masterPokemonList[pokemonResult.name].type2;
-        htmlDisplay += '<div class="result-field-container"><label class="results-label">Defensive Type 1:</label><div class="results-value center">' + defensiveType1 + '</div></div>';
-        htmlDisplay += '<div class="result-field-container"><label class="results-label">Defensive Type 2:</label><div class="results-value center">' + defensiveType2 + '</div></div>';
-        htmlDisplay += '<div class="result-field-container center"><img width="120" height="120" src="' + masterPokemonList[pokemonResult.name].imageURL + '"/></div>';
-        htmlDisplay += '<div class="result-field-container center"><button id="' + pokemonResult.id + '" class="remove-pokemon-button">Remove Pokemon</button></div>';
-        htmlDisplay += '</div>';
+            const defensiveType1 = masterPokemonList[pokemonResult.name].type1;
+            const defensiveType2 = masterPokemonList[pokemonResult.name].type2;
+            htmlDisplay += '<div class="result-field-container"><label class="results-label">Defensive Type 1:</label><div class="results-value center">' + defensiveType1 + '</div></div>';
+            htmlDisplay += '<div class="result-field-container"><label class="results-label">Defensive Type 2:</label><div class="results-value center">' + defensiveType2 + '</div></div>';
+            htmlDisplay += '<div class="result-field-container center"><img width="120" height="120" src="' + masterPokemonList[pokemonResult.name].imageURL + '"/></div>';
+            htmlDisplay += '<div class="result-field-container center"><button id="' + pokemonResult.id + '" class="remove-pokemon-button">Remove Pokemon</button></div>';
+            htmlDisplay += '</div>';
 
-        $('#current-team-container').append(htmlDisplay);
+            $('#current-team-container').append(htmlDisplay);
+        } else {
+            // Pokemon is invalid, remove it from the cookies
+            deletePokemonCookie(pokemonResult.id);
+        }
     }
 
     if (pokemonTeamList.length == 0) {
