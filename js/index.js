@@ -397,8 +397,6 @@ function setResultDisplay(results, offensiveType1, offensiveType2, teraType) {
         // 5. Not strong against tera type & resists at least something with no weakness
         // 6. Not strong against tera type & no weaknesses and no resistances
         // 7. If one of the 6 results aren't met, we won't display it
-        //console.log('pokemon: ' + pokemonResult.name);
-        //console.log('pokemonResult.offensiveType1Status: ' + pokemonResult.offensiveType1Status);
         if (pokemonResult.hasStrength && pokemonResult.offensiveType1Status.includes('Resisted') && (pokemonResult.offensiveType2Status.includes('Resisted') || offensiveType2 == 'None')) {
             $('#type-advantage-and-all-resistances-results-container').append(htmlDisplay);
             firstResultDisplayHasContent = true;
@@ -637,6 +635,7 @@ function deletePokemonCookie(pokemonId) {
     masterPokemonList["Camerupt"] = buildPokemon("Camerupt","Fire","Ground","https://www.serebii.net/scarletviolet/pokemon/small/323.png","323",["Magma Armor","Solid Rock","Anger Point"],"70","100","70","105","75","40");
     masterPokemonList["Ceruledge"] = buildPokemon("Ceruledge","Fire","Ghost","https://www.serebii.net/scarletviolet/pokemon/small/1005.png","1005",["Flash Fire","Weak Armor"],"75","125","80","60","100","85");
     masterPokemonList["Cetitan"] = buildPokemon("Cetitan","Ice","None","https://www.serebii.net/scarletviolet/pokemon/small/948.png","948",["Thick Fat","Slush Rush","Sheer Force"],"170","113","65","45","55","73");
+    masterPokemonList["Charizard"] = buildPokemon("Charizard","Fire","Flying","https://www.serebii.net/scarletviolet/pokemon/small/006.png","6",["Blaze","Solar Power"],"78","84","78","109","85","100");
     masterPokemonList["Chansey"] = buildPokemon("Chansey","Normal","None","https://www.serebii.net/scarletviolet/pokemon/small/113.png","113",["Natural Cure","Serene Grace","Healer"],"250","5","5","35","105","50");
     masterPokemonList["Chi-Yu"] = buildPokemon("Chi-Yu","Dark","Fire","https://www.serebii.net/scarletviolet/pokemon/small/997.png","997",["Beads of Ruin"],"55","80","80","135","120","100");
     masterPokemonList["Chien-Pao"] = buildPokemon("Chien-Pao","Dark","Ice","https://www.serebii.net/scarletviolet/pokemon/small/995.png","995",["Sword of Ruin"],"80","120","80","90","65","135");
