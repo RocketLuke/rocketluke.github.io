@@ -21,3 +21,7 @@ This view has two parts:
 2. A display of your current, with buttons to remove team tembers
 
 Once you've added Pokémon to your team, you can go to the Raid Finder and determine how effective they'll (likely) be against a raid Pokémon!
+
+This application was built by myself at:
+https://github.com/RocketLuke
+https://www.twitch.tv/adamantcloud
