@@ -18,24 +18,30 @@ $(document).ready(function(){
     // Initialize the "select2" package on any element with "select" as a class
     $('.select').select2();
 
-    $("#pokemon-picker-button").on( "click", function() {
-        $('#pokemon-picker-button').css('display', 'none');
-        $('#team-builder-container').css('display', 'none');
+    $("#raid-helper-button").on( "click", function() {
+        $('#raid-helper-header-container').css('display', 'block');
+        $('#raid-helper-results-container').css('display', 'block');
         $('#team-builder-button').css('display', 'inline');
-        $('#pokemon-picker-container').css('display', 'block');
+
+        $('#team-builder-header-container').css('display', 'none');
+        $('#team-builder-results-container').css('display', 'none');
+        $('#raid-helper-button').css('display', 'none');
     });
 
     $("#team-builder-button").on( "click", function() {
+        $('#raid-helper-header-container').css('display', 'none');
+        $('#raid-helper-results-container').css('display', 'none');
         $('#team-builder-button').css('display', 'none');
-        $('#pokemon-picker-container').css('display', 'none');
-        $('#pokemon-picker-button').css('display', 'inline');
-        $('#team-builder-container').css('display', 'block');
+
+        $('#team-builder-header-container').css('display', 'block');
+        $('#team-builder-results-container').css('display', 'block');
+        $('#raid-helper-button').css('display', 'inline');
     });
 
-    $("#calculate-button").on( "click", function() {
-       let offensiveType1 = $('#offensive-type-1').val();
-       let offensiveType2 = $('#offensive-type-2').val();
-       let teraType = $('#tera-type').val();
+    $("#raid-helper-submit-button").on( "click", function() {
+       let offensiveType1 = $('#raid-pokemon-offensive-type-1').val();
+       let offensiveType2 = $('#raid-pokemon-offensive-type-2').val();
+       let teraType = $('#raid-pokemon-tera-type').val();
 
        const results = calculateEffectiveness(offensiveType1, offensiveType2, teraType);
        setResultDisplay(results, offensiveType1, offensiveType2, teraType);
@@ -44,18 +50,14 @@ $(document).ready(function(){
     $("#add-pokemon-button").on( "click", function() {
         let newPokemonName = $('#new-pokemon-name').val();
         let newPokemonOffensiveType = $('#new-pokemon-offensive-type').val();
-        let newPokemonDefensiveType1 = $('#new-pokemon-defensive-type-1').val();
-        let newPokemonDefensiveType2 = $('#new-pokemon-defensive-type-2').val();
-        let newPokemonImageURL = $('#new-pokemon-image-url').val();
 
-        createPokemonCookie(newPokemonName, newPokemonOffensiveType, [newPokemonDefensiveType1, newPokemonDefensiveType2], newPokemonImageURL);
+        createPokemonCookie(newPokemonName, newPokemonOffensiveType);
         refreshCurrentTeamContainer();
 
         $('#new-pokemon-name').val('');
         $('#new-pokemon-offensive-type').val('Normal').trigger('change');
         $('#new-pokemon-defensive-type-1').val('Normal').trigger('change');
         $('#new-pokemon-defensive-type-2').val('None').trigger('change');
-        $('#new-pokemon-image-url').val('');
     });
 
     $("#current-team-container").on( "click", '.result-container .remove-pokemon-button', function() {
@@ -77,9 +79,19 @@ $(document).ready(function(){
         var pokemon = masterPokemonList[e.params.data.id];
 
         // Set the raid pokemon's type fields
-        $('#offensive-type-1').val(pokemon.type1).trigger('change');
-        $('#offensive-type-2').val(pokemon.type2).trigger('change');
+        $('#raid-pokemon-offensive-type-1').val(pokemon.type1).trigger('change');
+        $('#raid-pokemon-offensive-type-2').val(pokemon.type2).trigger('change');
     });
+
+    $('#new-pokemon-name').on('select2:select', function (e) {
+        var pokemon = masterPokemonList[e.params.data.id];
+
+        // Set the new pokemon's type fields
+        $('#new-pokemon-defensive-type-1').val(pokemon.type1).trigger('change');
+        $('#new-pokemon-defensive-type-2').val(pokemon.type2).trigger('change');
+        $('#new-pokemon-offensive-type').val(pokemon.type1).trigger('change');
+    });
+    $('#new-pokemon-defensive-type-2').hide();
 
     $(document).on('select2:open', () => {
         document.querySelector('.select2-search__field').focus();
@@ -103,12 +115,10 @@ class Type {
  * Represents a pokemon on our team
  */
 class Pokemon {
-    constructor(id, name, offensiveType, defensiveTypes, imageURL) {
+    constructor(id, name, teraType) {
         this.id = id;
         this.name = name;
-        this.offensiveType = offensiveType;
-        this.defensiveTypes = defensiveTypes;
-        this.imageURL = imageURL;
+        this.teraType = teraType;
     }
 }
 
@@ -189,7 +199,7 @@ function setTypeMatrix() {
     typeMatrix.Bug = new Type('Bug', bugStrengths, bugWeaknesses, bugResistances, bugImmunities);
 
     let rockStrengths = ['Fire', 'Ice', 'Flying', 'Bug'];
-    let rockWeaknesses = ['Water', 'Grass', 'Fighting', 'Ground'];
+    let rockWeaknesses = ['Water', 'Grass', 'Fighting', 'Ground', 'Steel'];
     let rockResistances = ['Normal', 'Fire', 'Poison', 'Flying'];
     let rockImmunities = [];
     typeMatrix.Rock = new Type('Rock', rockStrengths, rockWeaknesses, rockResistances, rockImmunities);
@@ -255,13 +265,16 @@ function calculateEffectiveness(offensiveType1Label, offensiveType2Label, teraTy
         let teraTypeObject = typeMatrix[teraTypeLabel];
 
         // Offensive Advantage?
-        if (teraTypeObject.weaknesses.includes(pokemon.offensiveType)) {
+        if (teraTypeObject.weaknesses.includes(pokemon.teraType)) {
             hasStrength = true;
         }
 
+        // Retrieve the pokemon's defensive types from the master pokemon list
+        const defensiveTypeLabels = [masterPokemonList[pokemon.name].type1, masterPokemonList[pokemon.name].type2];
+
         // Defensive Pros/Cons?
-        for (let defensiveLoopCounter = 0; defensiveLoopCounter < pokemon.defensiveTypes.length; defensiveLoopCounter++) {
-            const pokemonDefensiveTypeLabel = pokemon.defensiveTypes[defensiveLoopCounter];
+        for (let defensiveLoopCounter = 0; defensiveLoopCounter < defensiveTypeLabels.length; defensiveLoopCounter++) {
+            const pokemonDefensiveTypeLabel = defensiveTypeLabels[defensiveLoopCounter];
             const pokemonDefensiveTypeObject = typeMatrix[pokemonDefensiveTypeLabel];
 
             // Weaknesses
@@ -292,10 +305,10 @@ function calculateEffectiveness(offensiveType1Label, offensiveType2Label, teraTy
         const result = {};
         result.name = pokemon.name;
         result.hasStrength = hasStrength;
-        result.offensiveType = pokemon.offensiveType;
+        result.offensiveType = pokemon.teraType;
         result.offensiveType1Status = offensiveType1Status;
         result.offensiveType2Status = offensiveType2Status;
-        result.imageURL = pokemon.imageURL;
+        result.imageURL = masterPokemonList[pokemon.name].imageURL;
         results.push(result);
     }
 
@@ -348,33 +361,109 @@ function setStatus(currentStatus, newStatus) {
  * @param {*} teraType          The raid pokemon's Tera type
  */
 function setResultDisplay(results, offensiveType1, offensiveType2, teraType) {
-    $('#strength-and-no-weaknesses-container').empty();
-    $('#no-strength-and-no-weaknesses-container').empty();
-    $('#strength-and-some-weaknesses-container').empty();
-    $('#everything-else-container').empty();
+    resetResultsDisplays();
+
+    firstResultDisplayHasContent = false;
+    secondResultDisplayHasContent = false;
+    thirdResultDisplayHasContent = false;
+    fourthResultDisplayHasContent = false;
+    fifthResultDisplayHasContent = false;
+    sixthResultDisplayHasContent = false;
+    atLeastOneResultDisplayHasContent = false;
 
     // Loop through all our results, appending them onto our HTML page's results divs
     for (let i = 0; i < results.length; i++) {
         const pokemonResult = results[i];
 
+        let isSupereffective;
+        if (pokemonResult.hasStrength) {
+            isSupereffective = 'Yes';
+        } else {
+            isSupereffective = 'No';
+        }
+
         let htmlDisplay = '<div class="result-container">';
-        htmlDisplay += '<div class="result-field-container"><label class="result-label">Name:</label><div class="results-value">' + pokemonResult.name + ' (' + pokemonResult.offensiveType + ')</div></div>';
-        htmlDisplay += '<div class="result-field-container"><label class="result-label">Has Strength Against ' + teraType + ':</label><div class="results-value">' + pokemonResult.hasStrength + '</div></div>';
-        htmlDisplay += '<div class="result-field-container"><label class="result-label">Offensive Type 1 (' + offensiveType1 + ') Status:</label><div class="results-value">' + pokemonResult.offensiveType1Status + '</div></div>';
-        htmlDisplay += '<div class="result-field-container"><label class="result-label">Offensive Type 2 (' + offensiveType2 + ') Status:</label><div class="results-value">' + pokemonResult.offensiveType2Status + '</div></div>';
-        htmlDisplay += '<div class="result-field-container"><img width="200" height="200" src="' + pokemonResult.imageURL + '"/></div>';
+        htmlDisplay += '<div class="result-field-container"><label class="results-label">Pokemon / Tera Type:</label><div class="results-value center">' + pokemonResult.name + ' / ' + pokemonResult.offensiveType + '</div></div>';
+        htmlDisplay += '<div class="result-field-container"><label class="results-label">Is Tera Type Supereffective?</label><div class="results-value center">' + isSupereffective + '</div></div>';
+        htmlDisplay += '<div class="result-field-container"><label class="results-label">Resists ' + offensiveType1 + '?</label><div class="results-value center">' + pokemonResult.offensiveType1Status + '</div></div>';
+        if (offensiveType2 != 'None') {
+            htmlDisplay += '<div class="result-field-container"><label class="results-label">Resists ' + offensiveType2 + '?</label><div class="results-value center">' + pokemonResult.offensiveType2Status + '</div></div>';
+        }
+        htmlDisplay += '<div class="result-field-container center"><img width="120" height="120" src="' + pokemonResult.imageURL + '"/></div>';
         htmlDisplay += '</div>';
 
-        if (pokemonResult.hasStrength && !pokemonResult.offensiveType1Status.includes('Weak') && !pokemonResult.offensiveType2Status.includes('Weak')) {
-            $('#strength-and-no-weaknesses-container').append(htmlDisplay);
-        } else if (!pokemonResult.hasStrength && !pokemonResult.offensiveType1Status.includes('Weak') && !pokemonResult.offensiveType2Status.includes('Weak')){
-            $('#no-strength-and-no-weaknesses-container').append(htmlDisplay);
-        } else if (pokemonResult.hasStrength) {
-            $('#strength-and-some-weaknesses-container').append(htmlDisplay);
+        // 7 possible results:
+        // 1. Is strong against tera type & resists everything
+        // 2. Is strong against tera type & resists at least something with no weakness
+        // 3. Is strong against tera type and has no weaknesses and no resistances
+        // 4. Not strong against tera type & resists everything
+        // 5. Not strong against tera type & resists at least something with no weakness
+        // 6. Not strong against tera type & no weaknesses and no resistances
+        // 7. If one of the 6 results aren't met, we won't display it
+        if (pokemonResult.hasStrength && pokemonResult.offensiveType1Status.includes('Resisted') && (pokemonResult.offensiveType2Status.includes('Resisted') || offensiveType2 == 'None')) {
+            $('#type-advantage-and-all-resistances-results-container').append(htmlDisplay);
+            firstResultDisplayHasContent = true;
+            atLeastOneResultDisplayHasContent = true;
+        } else if (pokemonResult.hasStrength && !pokemonResult.offensiveType1Status.includes('Weak') && !pokemonResult.offensiveType2Status.includes('Weak') && (pokemonResult.offensiveType1Status.includes('Resisted') || pokemonResult.offensiveType2Status.includes('Resisted') )) {
+            $('#type-advantage-and-some-resistances-results-container').append(htmlDisplay);
+            secondResultDisplayHasContent = true;
+            atLeastOneResultDisplayHasContent = true;
+        } else if (pokemonResult.hasStrength && !pokemonResult.offensiveType1Status.includes('Weak') && !pokemonResult.offensiveType2Status.includes('Weak')) {
+            $('#type-advantage-and-no-resistances-results-container').append(htmlDisplay);
+            thirdResultDisplayHasContent = true;
+            atLeastOneResultDisplayHasContent = true;
+        } else if (pokemonResult.offensiveType1Status.includes('Resisted') && (pokemonResult.offensiveType2Status.includes('Resisted') || offensiveType2 == 'None')) {
+            $('#all-resistances-results-container').append(htmlDisplay);
+            fourthResultDisplayHasContent = true;
+            atLeastOneResultDisplayHasContent = true;
+        } else if (!pokemonResult.offensiveType1Status.includes('Weak') && !pokemonResult.offensiveType2Status.includes('Weak') && (pokemonResult.offensiveType1Status.includes('Resisted') || pokemonResult.offensiveType2Status.includes('Resisted') )) {
+            $('#some-resistances-results-container').append(htmlDisplay);
+            fifthResultDisplayHasContent = true;
+            atLeastOneResultDisplayHasContent = true;
+        } else if (!pokemonResult.offensiveType1Status.includes('Weak') && !pokemonResult.offensiveType2Status.includes('Weak')) {
+            $('#no-resistances-results-container').append(htmlDisplay);
+            sixthResultDisplayHasContent = true;
+            atLeastOneResultDisplayHasContent = true;
         }
     }
 
+    displayResultsElementIfItHasContent('#type-advantage-and-all-resistances-results-container', firstResultDisplayHasContent);
+    displayResultsElementIfItHasContent('#type-advantage-and-some-resistances-results-container', secondResultDisplayHasContent);
+    displayResultsElementIfItHasContent('#type-advantage-and-no-resistances-results-container', thirdResultDisplayHasContent);
+    displayResultsElementIfItHasContent('#all-resistances-results-container', fourthResultDisplayHasContent);
+    displayResultsElementIfItHasContent('#some-resistances-results-container', fifthResultDisplayHasContent);
+    displayResultsElementIfItHasContent('#no-resistances-results-container', sixthResultDisplayHasContent);
+
     $('.results-display').css('display', 'block');
+}
+
+function resetResultsDisplays() {
+    $('#type-advantage-and-all-resistances-results-container-header').css('display', 'none');
+    $('#type-advantage-and-some-resistances-results-container-header').css('display', 'none');;
+    $('#type-advantage-and-no-resistances-results-container-header').css('display', 'none');
+    $('#all-resistances-results-container-header').css('display', 'none');
+    $('#some-resistances-results-container-header').css('display', 'none');
+    $('#no-resistances-results-container-header').css('display', 'none');
+    $('#type-advantage-and-all-resistances-results-container').css('display', 'none');
+    $('#type-advantage-and-some-resistances-results-container').css('display', 'none');;
+    $('#type-advantage-and-no-resistances-results-container').css('display', 'none');
+    $('#all-resistances-results-container').css('display', 'none');
+    $('#some-resistances-results-container').css('display', 'none');
+    $('#no-resistances-results-container').css('display', 'none');
+
+    $('#type-advantage-and-all-resistances-results-container').empty();
+    $('#type-advantage-and-some-resistances-results-container').empty();;
+    $('#type-advantage-and-no-resistances-results-container').empty();
+    $('#all-resistances-results-container').empty();
+    $('#some-resistances-results-container').empty();
+    $('#no-resistances-results-container').empty();
+}
+
+function displayResultsElementIfItHasContent(containerId, hasContent) {
+    if (hasContent) {
+        $(containerId).css('display', 'block');
+        $(containerId + '-header').css('display', 'block');
+    }
 }
 
 /**
@@ -387,15 +476,15 @@ function refreshCurrentTeamContainer() {
         const pokemonResult = pokemonTeamList[i];
 
         let htmlDisplay = '<div class="result-container">';
-        htmlDisplay += '<div class="result-field-container"><label class="result-label">Name:</label><div class="results-value">' + pokemonResult.name + '</div></div>';
-        htmlDisplay += '<div class="result-field-container"><label class="result-label">Offensive/Tera Type:</label><div class="results-value">' + pokemonResult.offensiveType + '</div></div>';
-        let defensiveTypeCounter = 0;
-        for (let i = 0; i < pokemonResult.defensiveTypes.length; i++) {
-            defensiveTypeCounter++;
-            htmlDisplay += '<div class="result-field-container"><label class="result-label">Defensive Type ' + defensiveTypeCounter + ':</label><div class="results-value">' + pokemonResult.defensiveTypes[i] + '</div></div>';
-        }
-        htmlDisplay += '<div class="result-field-container"><button id="' + pokemonResult.id + '" class="remove-pokemon-button">Remove Pokemon</button></div>';
-        htmlDisplay += '<div class="result-field-container"><img width="200" height="200" src="' + pokemonResult.imageURL + '"/></div>';
+        htmlDisplay += '<div class="result-field-container"><label class="results-label">Pok&eacute;mon:</label><div class="results-value center">' + pokemonResult.name + '</div></div>';
+        htmlDisplay += '<div class="result-field-container"><label class="results-label">Offensive/Tera Type:</label><div class="results-value center">' + pokemonResult.teraType + '</div></div>';
+
+        const defensiveType1 = masterPokemonList[pokemonResult.name].type1;
+        const defensiveType2 = masterPokemonList[pokemonResult.name].type2;
+        htmlDisplay += '<div class="result-field-container"><label class="results-label">Defensive Type 1:</label><div class="results-value center">' + defensiveType1 + '</div></div>';
+        htmlDisplay += '<div class="result-field-container"><label class="results-label">Defensive Type 2:</label><div class="results-value center">' + defensiveType2 + '</div></div>';
+        htmlDisplay += '<div class="result-field-container center"><img width="120" height="120" src="' + masterPokemonList[pokemonResult.name].imageURL + '"/></div>';
+        htmlDisplay += '<div class="result-field-container center"><button id="' + pokemonResult.id + '" class="remove-pokemon-button">Remove Pokemon</button></div>';
         htmlDisplay += '</div>';
 
         $('#current-team-container').append(htmlDisplay);
@@ -457,7 +546,7 @@ function retrievePokemonFromCookies(arrayOfPokemonIds) {
     for (let i = 0; i < arrayOfPokemonIds.length; i++) {
         const pokemonId = arrayOfPokemonIds[i];
         const pokemonValues = JSON.parse(getCookie(pokemonId));
-        pokemonArray.push(new Pokemon(pokemonId, pokemonValues.name, pokemonValues.offensiveType, pokemonValues.defensiveTypes, pokemonValues.imageURL));
+        pokemonArray.push(new Pokemon(pokemonId, pokemonValues.name, pokemonValues.teraType));
     }
 
     return pokemonArray;
@@ -470,9 +559,9 @@ function retrievePokemonFromCookies(arrayOfPokemonIds) {
  * @param {*} defensiveTypes 
  * @param {*} imageURL 
  */
-function createPokemonCookie(name, offensiveType, defensiveTypes, imageURL) {
+function createPokemonCookie(name, teraType) {
     const newPokemonId = 'pokemon' + new Date().getTime();
-    const newPokemon = new Pokemon(newPokemonId, name, offensiveType, defensiveTypes, imageURL);
+    const newPokemon = new Pokemon(newPokemonId, name, teraType);
     const newPokemonJSON = JSON.stringify(newPokemon);
     pokemonTeamList.push(newPokemon);
     document.cookie = newPokemonId + "=" + newPokemonJSON + ";expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax";

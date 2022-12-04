@@ -1,10 +1,24 @@
+body {
+    background-color: #171a21;
+    color: #b8b6b4;
+    margin: 0px;
+}
 hr {
-    height: 15px;
+    height: 25px;
     background-color: #333;
     border-color: #333;
+    margin: 0;
 }
-h1 {
+h1, h2, h3 {
     margin-top: 0px;
+}
+h3.result-tab {
+    background-color: #333;
+    padding-left: 12px;
+    padding-right: 12px;
+    width: fit-content;
+    height: 27px;
+    border-radius: 0 0 10px 0;
 }
 label {
     display: inline-block;
@@ -31,17 +45,51 @@ label {
     padding: 106px 0;
 }
 .right-header-content-container {
-    text-align: right;
-    vertical-align: middle;
+    text-align: center;
     padding: 95px 0;
 }
-#pokemon-picker-button, #team-builder-button {
-    width: 150px;
+#raid-helper-button, #team-builder-button {
+    width: 250px;
     height: 60px;
     font-size: 18px;
 }
-
-
+#team-builder-header-container, #team-builder-results-container, #raid-helper-button {
+    display: none;
+}
+.results-container, #current-team-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+.result-container {
+    flex: 10%;
+    flex-grow: 0;
+    display: block;
+    background-color: #333;
+    padding: 12px;
+    margin: 24px;
+    border-radius: 10px;
+    width: 350px;
+}
+.result-field-container {
+    width: 350px;
+}
+.center {
+    text-align: center;
+}
+.new-pokemon-defensive-type-container span span span span b{
+    display:none !important;
+}
+.results-label {
+    width: 200px;
+}
+.results-value {
+    display: inline-block;
+    width: 150px;
+}
 
 
 
@@ -51,21 +99,6 @@ label {
 /* 
     Element Rules 
 */
-body {
-    background-color: #171a21;
-    color: #b8b6b4;
-    margin: 0px;
-}
-/*
-    Id rules
-*/
-#pokemon-picker-container {
-    display: block;
-}
-/* By default, these are set to not display, as they toggle their counterparts visible/non visible */
-#team-builder-container, #pokemon-picker-button {
-    display: none;
-}
 /*
     Class Rules
 */
@@ -75,40 +108,6 @@ body {
 }
 .results-display {
     display: none;
-}
-.result-field-container {
-    display: block;
-    width: 500px;
-    margin: auto;
-    margin-top: 10px;
-}
-.results-value {
-    display: inline-block;
-    width: 150px;
-}
-.result-field-container:first-of-type {
-    background-color: rgb(11, 12, 12);
-    color: white;
-}
-.strength-and-no-weaknesses-header {
-    color: green;
-}
-.no-strength-and-no-weaknesses-header {
-    color: lightblue;
-}
-.strength-and-some-weaknesses-header {
-    color: yellow;
-}
-.results-container, #current-team-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-bottom: 50px;
-}
-.result-container {
-    flex: 25%;
-    flex-grow: 0;
-    margin-bottom: 25px;
 }
 .input {
     width: 92px;
@@ -120,6 +119,9 @@ body {
 .select2-results__option {
     color: black;
 }
+
+
+
 /* Select2 Background & Text Color */
 .select2-results__option[id*='Bug'], .select2-selection__rendered[title*='Bug'] { 
     background-color: #A8B820;

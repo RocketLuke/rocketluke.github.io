@@ -1,4 +1,4 @@
-Pokémon Raid Helper
+<h1>Pokémon Raid Helper</h1>
 
 This web application was built to help determine which Pokémon one should for raids in Pokémon Scarlet & Violet.
 
@@ -21,6 +21,8 @@ This view has two parts:
 2. A display of your current, with buttons to remove team tembers
 
 Once you've added Pokémon to your team, you can go to the Raid Finder and determine how effective they'll (likely) be against a raid Pokémon!
+
+The Team Builder stores Pokémon via Cookies. Wiping Cookies for this web application will thus wipe any Pokémon added to your team. 
 
 This application was built by myself at:
 https://github.com/RocketLuke
