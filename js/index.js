@@ -230,7 +230,7 @@ function setTypeMatrix() {
 
     let fairyStrengths = ['Fighting', 'Dragon', 'Dark'];
     let fairyWeaknesses = ['Poison', 'Steel'];
-    let fairyResistances = ['Fightning', 'Bug', 'Dark'];
+    let fairyResistances = ['Fighting', 'Bug', 'Dark'];
     let fairyImmunities = ['Dragon'];
     typeMatrix.Fairy = new Type('Fairy', fairyStrengths, fairyWeaknesses, fairyResistances, fairyImmunities);
 
@@ -399,7 +399,7 @@ function setResultDisplay(results, offensiveType1, offensiveType2, teraType) {
         // 4. Not strong against tera type & resists everything
         // 5. Not strong against tera type & resists at least something with no weakness
         // 6. Not strong against tera type & no weaknesses and no resistances
-        // 7. If one of the 6 results aren't met, we won't display it\
+        // 7. If one of the 6 results aren't met, we won't display it
         console.log('pokemon: ' + pokemonResult.name);
         console.log('pokemonResult.offensiveType1Status: ' + pokemonResult.offensiveType1Status);
         if (pokemonResult.hasStrength && pokemonResult.offensiveType1Status.includes('Resisted') && (pokemonResult.offensiveType2Status.includes('Resisted') || offensiveType2 == 'None')) {
@@ -440,12 +440,14 @@ function setResultDisplay(results, offensiveType1, offensiveType2, teraType) {
 }
 
 function resetResultsDisplays() {
+    // Update result headers to not display
     $('#type-advantage-and-all-resistances-results-container-header').css('display', 'none');
     $('#type-advantage-and-some-resistances-results-container-header').css('display', 'none');;
     $('#type-advantage-and-no-resistances-results-container-header').css('display', 'none');
     $('#all-resistances-results-container-header').css('display', 'none');
     $('#some-resistances-results-container-header').css('display', 'none');
     $('#no-resistances-results-container-header').css('display', 'none');
+    // Update result containers to not display
     $('#type-advantage-and-all-resistances-results-container').css('display', 'none');
     $('#type-advantage-and-some-resistances-results-container').css('display', 'none');;
     $('#type-advantage-and-no-resistances-results-container').css('display', 'none');
@@ -453,6 +455,7 @@ function resetResultsDisplays() {
     $('#some-resistances-results-container').css('display', 'none');
     $('#no-resistances-results-container').css('display', 'none');
 
+    // Empty out the result containers
     $('#type-advantage-and-all-resistances-results-container').empty();
     $('#type-advantage-and-some-resistances-results-container').empty();;
     $('#type-advantage-and-no-resistances-results-container').empty();
@@ -611,7 +614,7 @@ function deletePokemonCookie(pokemonId) {
     masterPokemonList["Altaria"] = buildPokemon("Altaria","Dragon","Flying","https://www.serebii.net/scarletviolet/pokemon/small/334.png","334",["Natural Cure","Cloud Nine"],"75","70","90","70","105","80");
     masterPokemonList["Amoonguss"] = buildPokemon("Amoonguss","Grass","None","https://www.serebii.net/scarletviolet/pokemon/small/591.png","591",["Effect Spore","Regenerator"],"114","85","70","85","80","30");
     masterPokemonList["Ampharos"] = buildPokemon("Ampharos","Electric","None","https://www.serebii.net/scarletviolet/pokemon/small/181.png","181",["Static","Plus"],"90","75","85","115","90","55");
-    masterPokemonList["Annihilape"] = buildPokemon("Annihilape","Fightning","Ghost","https://www.serebii.net/scarletviolet/pokemon/small/1010.png","1010",["Vital Spirit","Inner Focus","Defiant"],"110","115","80","50","90","90");
+    masterPokemonList["Annihilape"] = buildPokemon("Annihilape","Fighting","Ghost","https://www.serebii.net/scarletviolet/pokemon/small/1010.png","1010",["Vital Spirit","Inner Focus","Defiant"],"110","115","80","50","90","90");
     masterPokemonList["Appletun"] = buildPokemon("Appletun","Grass","Dragon","https://www.serebii.net/scarletviolet/pokemon/small/842.png","842",["Ripen","Gluttony","Thick Fat"],"110","85","80","100","80","30");
     masterPokemonList["Arboliva"] = buildPokemon("Arboliva","Grass","None","https://www.serebii.net/scarletviolet/pokemon/small/937.png","937",["Seed Sower","Harvest"],"78","69","90","125","109","39");
     masterPokemonList["Arcanine"] = buildPokemon("Arcanine","Fire","None","https://www.serebii.net/scarletviolet/pokemon/small/59.png","59",["Intimidate","Flash Fire","Justified"],"90","110","80","100","80","95");
@@ -701,7 +704,7 @@ function deletePokemonCookie(pokemonId) {
     masterPokemonList["Grumpig"] = buildPokemon("Grumpig","Psychic","None","https://www.serebii.net/scarletviolet/pokemon/small/326.png","326",["Thick Fat","Own Tempo","Gluttony"],"80","45","65","90","110","80");
     masterPokemonList["Gumshoos"] = buildPokemon("Gumshoos","Normal","None","https://www.serebii.net/scarletviolet/pokemon/small/735.png","735",["Stakeout","Strong Jaw","Adaptability"],"88","110","60","55","60","45");
     masterPokemonList["Gyarados"] = buildPokemon("Gyarados","Water","Flying","https://www.serebii.net/scarletviolet/pokemon/small/130.png","130",["Intimidate","Moxie"],"95","125","79","60","100","81");
-    masterPokemonList["Hariyama"] = buildPokemon("Hariyama","Fightning","None","https://www.serebii.net/scarletviolet/pokemon/small/297.png","297",["Thick Fat","Guts","Sheer Force"],"144","120","60","40","60","50");
+    masterPokemonList["Hariyama"] = buildPokemon("Hariyama","Fighting","None","https://www.serebii.net/scarletviolet/pokemon/small/297.png","297",["Thick Fat","Guts","Sheer Force"],"144","120","60","40","60","50");
     masterPokemonList["Hatterene"] = buildPokemon("Hatterene","Psychic","Fairy","https://www.serebii.net/scarletviolet/pokemon/small/858.png","858",["Healer","Anticipation","Magic Bounce"],"57","90","95","136","103","29");
     masterPokemonList["Hawlucha"] = buildPokemon("Hawlucha","Fighting","Flying","https://www.serebii.net/scarletviolet/pokemon/small/701.png","701",["Limber","Unburden","Mold Breaker"],"78","92","75","74","63","118");
     masterPokemonList["Haxorus"] = buildPokemon("Haxorus","Dragon","None","https://www.serebii.net/scarletviolet/pokemon/small/612.png","612",["Rivalry","Mold Breaker","Unnerve"],"76","147","90","60","70","97");
