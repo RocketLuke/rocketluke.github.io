@@ -18,7 +18,7 @@ In order to use the Raid Finder, you must first create your team of Pokémon!
 
 This view has two parts:
 1. A form for entering in new Pokémon for your team
-2. A display of your current teamn with buttons to remove team members
+2. A display of your current team with buttons to remove team members
 
 Once you've added Pokémon to your team, you can go to the Raid Finder and determine how effective they'll (likely) be against a raid Pokémon!
 
