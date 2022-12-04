@@ -54,10 +54,7 @@ $(document).ready(function(){
         createPokemonCookie(newPokemonName, newPokemonOffensiveType);
         refreshCurrentTeamContainer();
 
-        $('#new-pokemon-name').val('');
-        $('#new-pokemon-offensive-type').val('Normal').trigger('change');
-        $('#new-pokemon-defensive-type-1').val('Normal').trigger('change');
-        $('#new-pokemon-defensive-type-2').val('None').trigger('change');
+        $('#new-pokemon-offensive-type').val('Normal').trigger('change');;
     });
 
     $("#current-team-container").on( "click", '.result-container .remove-pokemon-button', function() {
