@@ -1,0 +1,99 @@
+Issues:
+- Turn team builder pokemon select into a select of every available pokemon
+    - Auto fill in defensive types + retrieve images
+    - Turn Tera/Typing into a dropdown
+    - This would be usable in both the team builder and pokemon finder
+
+Names?:
+- PKMN Scarlet & Violet: Team Builder for Raids
+- Pokemon Raid Helper
+
+- Make Over
+Screen 1: Pokemon Finder
+
+---------------------------------------------------- top screen border -------------------------------------------------------------------------
+"Find a Pokemon for your raid:"
+Pokemon-Drop-Down                                                                       Website Title                        Team-Builder-Button
+Offensive-Type-1-Drop-Down  Offensive-Type-2-Drop-Down
+Tera-Type-Drop-Down
+----------------------------------------------------------<HR/>---------------------------------------------------------------------------------
+Type-Advantage-And-All-Resistances-Label
+                Pokemon-Name                                                Pokemon-Name
+Pokemon-Image   Pokemon-Tera-Type                           Pokemon-Image   Pokemon-Tera-Type  
+                Pokemon-Defensive-Type-1-With-Strength                      Pokemon-Defensive-Type-1-With-Strength
+                Pokemon-Defensive-Type-2-With-Strength                      Pokemon-Defensive-Type-2-With-Strength
+------------------------------------------------------------------------------------------------------------------------------------------------
+Type-Advantage-And-Some-Resistances-Label
+                Pokemon-Name                                                Pokemon-Name
+Pokemon-Image   Pokemon-Tera-Type                           Pokemon-Image   Pokemon-Tera-Type  
+                Pokemon-Defensive-Type-1-With-Strength                      Pokemon-Defensive-Type-1-With-Strength
+                Pokemon-Defensive-Type-2-With-Strength                      Pokemon-Defensive-Type-2-With-Strength
+------------------------------------------------------------------------------------------------------------------------------------------------
+Type-Advantage-And-No-Resistances-Label
+                Pokemon-Name                                                Pokemon-Name
+Pokemon-Image   Pokemon-Tera-Type                           Pokemon-Image   Pokemon-Tera-Type  
+                Pokemon-Defensive-Type-1-With-Strength                      Pokemon-Defensive-Type-1-With-Strength
+                Pokemon-Defensive-Type-2-With-Strength                      Pokemon-Defensive-Type-2-With-Strength
+------------------------------------------------------------------------------------------------------------------------------------------------
+All-Resistances-Label
+                Pokemon-Name                                                Pokemon-Name
+Pokemon-Image   Pokemon-Tera-Type                           Pokemon-Image   Pokemon-Tera-Type  
+                Pokemon-Defensive-Type-1-With-Strength                      Pokemon-Defensive-Type-1-With-Strength
+                Pokemon-Defensive-Type-2-With-Strength                      Pokemon-Defensive-Type-2-With-Strength
+------------------------------------------------------------------------------------------------------------------------------------------------
+Some-Resistances-Label
+                Pokemon-Name                                                Pokemon-Name
+Pokemon-Image   Pokemon-Tera-Type                           Pokemon-Image   Pokemon-Tera-Type  
+                Pokemon-Defensive-Type-1-With-Strength                      Pokemon-Defensive-Type-1-With-Strength
+                Pokemon-Defensive-Type-2-With-Strength                      Pokemon-Defensive-Type-2-With-Strength
+------------------------------------------------------------------------------------------------------------------------------------------------
+No-Resistances-Label
+                Pokemon-Name                                                Pokemon-Name
+Pokemon-Image   Pokemon-Tera-Type                           Pokemon-Image   Pokemon-Tera-Type  
+                Pokemon-Defensive-Type-1-With-Strength                      Pokemon-Defensive-Type-1-With-Strength
+                Pokemon-Defensive-Type-2-With-Strength                      Pokemon-Defensive-Type-2-With-Strength
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+Screen 2: Team Builder
+---------------------------------------------------- top screen border -------------------------------------------------------------------------
+"Team Builder:"
+Pokemon-Drop-Down                                                                       Website Title                        Team-Builder-Button
+Offensive-Type-1-Drop-Down  Offensive-Type-2-Drop-Down
+Tera-Type-Drop-Down
+----------------------------------------------------------<HR/>---------------------------------------------------------------------------------
+"Current Team"
+                Pokemon-Name                                                Pokemon-Name
+Pokemon-Image   Pokemon-Tera-Type                           Pokemon-Image   Pokemon-Tera-Type  
+Remove-Button   Pokemon-Defensive-Type-1-With-Strength      Remove-Button   Pokemon-Defensive-Type-1-With-Strength
+                Pokemon-Defensive-Type-2-With-Strength                      Pokemon-Defensive-Type-2-With-Strength
+
+                Pokemon-Name                                                Pokemon-Name
+Pokemon-Image   Pokemon-Tera-Type                           Pokemon-Image   Pokemon-Tera-Type  
+Remove-Button   Pokemon-Defensive-Type-1-With-Strength      Remove-Button   Pokemon-Defensive-Type-1-With-Strength
+                Pokemon-Defensive-Type-2-With-Strength                      Pokemon-Defensive-Type-2-With-Strength
+
+                Pokemon-Name                                                Pokemon-Name
+Pokemon-Image   Pokemon-Tera-Type                           Pokemon-Image   Pokemon-Tera-Type  
+Remove-Button   Pokemon-Defensive-Type-1-With-Strength      Remove-Button   Pokemon-Defensive-Type-1-With-Strength
+                Pokemon-Defensive-Type-2-With-Strength                      Pokemon-Defensive-Type-2-With-Strength
+
+All-Resistances-Label
+                Pokemon-Name                                                Pokemon-Name
+Pokemon-Image   Pokemon-Tera-Type                           Pokemon-Image   Pokemon-Tera-Type  
+Remove-Button   Pokemon-Defensive-Type-1-With-Strength      Remove-Button   Pokemon-Defensive-Type-1-With-Strength
+                Pokemon-Defensive-Type-2-With-Strength                      Pokemon-Defensive-Type-2-With-Strength
+
+                Pokemon-Name                                                Pokemon-Name
+Pokemon-Image   Pokemon-Tera-Type                           Pokemon-Image   Pokemon-Tera-Type  
+                Pokemon-Defensive-Type-1-With-Strength                      Pokemon-Defensive-Type-1-With-Strength
+                Pokemon-Defensive-Type-2-With-Strength                      Pokemon-Defensive-Type-2-With-Strength
+
+                Pokemon-Name                                                Pokemon-Name
+Pokemon-Image   Pokemon-Tera-Type                           Pokemon-Image   Pokemon-Tera-Type  
+                Pokemon-Defensive-Type-1-With-Strength                      Pokemon-Defensive-Type-1-With-Strength
+                Pokemon-Defensive-Type-2-With-Strength                      Pokemon-Defensive-Type-2-With-Strength
+-

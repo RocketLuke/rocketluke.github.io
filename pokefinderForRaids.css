@@ -1,0 +1,185 @@
+hr {
+    height: 15px;
+    background-color: #333;
+    border-color: #333;
+}
+h1 {
+    margin-top: 0px;
+}
+label {
+    display: inline-block;
+    width: 150px;
+}
+.header-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.header-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 250px;
+    padding: 15px;
+}
+.left-header-content-container, .middle-header-content-container, .right-header-content-container {
+    flex: 33%;
+    flex-grow: 1;
+}
+.middle-header-content-container {
+    text-align: center;
+    padding: 106px 0;
+}
+.right-header-content-container {
+    text-align: right;
+    vertical-align: middle;
+    padding: 95px 0;
+}
+#pokemon-picker-button, #team-builder-button {
+    width: 150px;
+    height: 60px;
+    font-size: 18px;
+}
+
+
+
+
+
+
+
+
+/* 
+    Element Rules 
+*/
+body {
+    background-color: #171a21;
+    color: #b8b6b4;
+    margin: 0px;
+}
+/*
+    Id rules
+*/
+#pokemon-picker-container {
+    display: block;
+}
+/* By default, these are set to not display, as they toggle their counterparts visible/non visible */
+#team-builder-container, #pokemon-picker-button {
+    display: none;
+}
+/*
+    Class Rules
+*/
+.form-piece-container {
+    display: block;
+    margin-top: 10px;
+}
+.results-display {
+    display: none;
+}
+.result-field-container {
+    display: block;
+    width: 500px;
+    margin: auto;
+    margin-top: 10px;
+}
+.results-value {
+    display: inline-block;
+    width: 150px;
+}
+.result-field-container:first-of-type {
+    background-color: rgb(11, 12, 12);
+    color: white;
+}
+.strength-and-no-weaknesses-header {
+    color: green;
+}
+.no-strength-and-no-weaknesses-header {
+    color: lightblue;
+}
+.strength-and-some-weaknesses-header {
+    color: yellow;
+}
+.results-container, #current-team-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+.result-container {
+    flex: 25%;
+    flex-grow: 0;
+    margin-bottom: 25px;
+}
+.input {
+    width: 92px;
+}
+.select {
+    width: 125px;
+    color: black !important;
+}
+.select2-results__option {
+    color: black;
+}
+/* Select2 Background & Text Color */
+.select2-results__option[id*='Bug'], .select2-selection__rendered[title*='Bug'] { 
+    background-color: #A8B820;
+}
+.select2-results__option[id*='Dark'], .select2-selection__rendered[title*='Dark'] { 
+    background-color: #705848;
+    color: white !important;
+}
+.select2-results__option[id*='Dragon'], .select2-selection__rendered[title*='Dragon'] { 
+    background-color: #7038F8;
+    color: white !important;
+}
+.select2-results__option[id*='Electric'], .select2-selection__rendered[title*='Electric'] { 
+    background-color: #F8D030;
+}
+.select2-results__option[id*='Fairy'], .select2-selection__rendered[title*='Fairy'] { 
+    background-color: #EE99AC;
+}
+.select2-results__option[id*='Fighting'], .select2-selection__rendered[title*='Fighting'] { 
+    background-color: #C03028;
+    color: white !important;
+}
+.select2-results__option[id*='Fire'], .select2-selection__rendered[title*='Fire'] { 
+    background-color: #F08030;
+}
+.select2-results__option[id*='Flying'], .select2-selection__rendered[title*='Flying'] { 
+    background-color: #A890F0;
+}
+.select2-results__option[id*='Ghost'], .select2-selection__rendered[title*='Ghost'] { 
+    background-color: #705898;
+    color: white !important;
+}
+.select2-results__option[id*='Grass'], .select2-selection__rendered[title*='Grass'] { 
+    background-color: #78C850;
+}
+.select2-results__option[id*='Ground'], .select2-selection__rendered[title*='Ground'] { 
+    background-color: #E0C068;
+}
+.select2-results__option[id*='Ice'], .select2-selection__rendered[title*='Ice'] { 
+    background-color: #98D8D8;
+}
+.select2-results__option[id*='Normal'], .select2-selection__rendered[title*='Normal'] { 
+    background-color: #A8A878;
+}
+.select2-results__option[id*='Poison'], .select2-selection__rendered[title*='Poison'] { 
+    background-color: #A040A0;
+    color: white !important;
+}
+.select2-results__option[id*='Psychic'], .select2-selection__rendered[title*='Psychic'] { 
+    background-color: #F85888;
+}
+.select2-results__option[id*='Rock'], .select2-selection__rendered[title*='Rock'] { 
+    background-color: #B8A038;
+}
+.select2-results__option[id*='Steel'], .select2-selection__rendered[title*='Steel'] { 
+    background-color: #B8B8D0;
+}
+.select2-results__option[id*='Water'], .select2-selection__rendered[title*='Water'] { 
+    background-color: #6890F0;
+}
+.select2-results__options {
+    max-height: 1000px !important;
+}
