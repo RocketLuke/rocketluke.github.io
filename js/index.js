@@ -400,8 +400,8 @@ function setResultDisplay(results, offensiveType1, offensiveType2, teraType) {
         // 5. Not strong against tera type & resists at least something with no weakness
         // 6. Not strong against tera type & no weaknesses and no resistances
         // 7. If one of the 6 results aren't met, we won't display it
-        console.log('pokemon: ' + pokemonResult.name);
-        console.log('pokemonResult.offensiveType1Status: ' + pokemonResult.offensiveType1Status);
+        //console.log('pokemon: ' + pokemonResult.name);
+        //console.log('pokemonResult.offensiveType1Status: ' + pokemonResult.offensiveType1Status);
         if (pokemonResult.hasStrength && pokemonResult.offensiveType1Status.includes('Resisted') && (pokemonResult.offensiveType2Status.includes('Resisted') || offensiveType2 == 'None')) {
             $('#type-advantage-and-all-resistances-results-container').append(htmlDisplay);
             firstResultDisplayHasContent = true;
