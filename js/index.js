@@ -463,8 +463,8 @@ function resetResultsDisplays() {
 
 function displayResultsElementIfItHasContent(containerId, hasContent) {
     if (hasContent) {
-        $(containerId).css('display', 'block');
-        $(containerId + '-header').css('display', 'flex');
+        $(containerId).css('display', 'flex');
+        $(containerId + '-header').css('display', 'block');
     }
 }
 
