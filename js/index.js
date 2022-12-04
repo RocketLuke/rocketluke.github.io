@@ -464,7 +464,7 @@ function resetResultsDisplays() {
 function displayResultsElementIfItHasContent(containerId, hasContent) {
     if (hasContent) {
         $(containerId).css('display', 'block');
-        $(containerId + '-header').css('display', 'block');
+        $(containerId + '-header').css('display', 'flex');
     }
 }
 
