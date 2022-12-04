@@ -2,7 +2,7 @@
 
 This web application was built to help determine which Pokémon one should for raids in Pokémon Scarlet & Violet.
 
-<h2>How To Use</h2>:
+<h2>How To Use</h2>
 
 This web application is divided into two parts
 - Raid Finder
