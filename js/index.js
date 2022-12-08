@@ -42,9 +42,10 @@ $(document).ready(function(){
        let offensiveType1 = $('#raid-pokemon-offensive-type-1').val();
        let offensiveType2 = $('#raid-pokemon-offensive-type-2').val();
        let teraType = $('#raid-pokemon-tera-type').val();
+       let raidPokemonName = $('#raid-pokemon-name').val();
 
        const results = calculateEffectiveness(offensiveType1, offensiveType2, teraType);
-       setResultDisplay(results, offensiveType1, offensiveType2, teraType);
+       setResultDisplay(results, offensiveType1, offensiveType2, teraType, raidPokemonName);
     });
 
     $("#add-pokemon-button").on( "click", function() {
@@ -78,6 +79,7 @@ $(document).ready(function(){
         // Set the raid pokemon's type fields
         $('#raid-pokemon-offensive-type-1').val(pokemon.type1).trigger('change');
         $('#raid-pokemon-offensive-type-2').val(pokemon.type2).trigger('change');
+        $('#raid-pokemon-image').attr('src', pokemon.imageURL);
     });
 
     $('#new-pokemon-name').on('select2:select', function (e) {
@@ -357,8 +359,24 @@ function setStatus(currentStatus, newStatus) {
  * @param {*} offensiveType2    If present, another of the raid pokemon's offensive typings
  * @param {*} teraType          The raid pokemon's Tera type
  */
-function setResultDisplay(results, offensiveType1, offensiveType2, teraType) {
+function setResultDisplay(results, offensiveType1, offensiveType2, teraType, raidPokemonName) {
     resetResultsDisplays();
+
+    if (raidPokemonName != null) {
+        const raidPokemon = masterPokemonList[raidPokemonName];
+
+        const raidPokemonAbilities = raidPokemon.abilities;
+        console.log('here');
+        if (raidPokemonAbilities.includes('Competitive')) {
+            const warningMessage = 'Warning! This Pok&eacute;mon may have the ability Competitive. When a Pok&eacute;mon with Competitive has its stats lowered, it gains two stages of special attack, potentially bricking your raid!';
+            $('#raid-pokemon-warning-container').append(warningMessage);
+        }
+        if (raidPokemonAbilities.includes('Defiant')) {
+            const warningMessage = 'Warning! This Pok&eacute;mon may have the ability Defiant. When a Pok&eacute;mon with Defiant has its stats lowered, it gains two stages of attack, potentially bricking your raid!';
+            $('#raid-pokemon-warning-container').append(warningMessage);
+            console.log('we set it');
+        }
+    }
 
     firstResultDisplayHasContent = false;
     secondResultDisplayHasContent = false;
@@ -380,7 +398,7 @@ function setResultDisplay(results, offensiveType1, offensiveType2, teraType) {
         }
 
         let htmlDisplay = '<div class="result-container">';
-        htmlDisplay += '<div class="result-field-container"><label class="results-label">Pokemon / Tera Type:</label><div class="results-value center">' + pokemonResult.name + ' / ' + pokemonResult.offensiveType + '</div></div>';
+        htmlDisplay += '<div class="result-field-container"><label class="results-label">Pok&eacute;mon / Tera Type:</label><div class="results-value center">' + pokemonResult.name + ' / ' + pokemonResult.offensiveType + '</div></div>';
         htmlDisplay += '<div class="result-field-container"><label class="results-label">Is Tera Type Supereffective?</label><div class="results-value center">' + isSupereffective + '</div></div>';
         htmlDisplay += '<div class="result-field-container"><label class="results-label">Resists ' + offensiveType1 + '?</label><div class="results-value center">' + pokemonResult.offensiveType1Status + '</div></div>';
         if (offensiveType2 != 'None') {
@@ -457,6 +475,8 @@ function resetResultsDisplays() {
     $('#all-resistances-results-container').empty();
     $('#some-resistances-results-container').empty();
     $('#no-resistances-results-container').empty();
+    // Reset the warning box
+    $('#raid-pokemon-warning').empty();
 }
 
 function displayResultsElementIfItHasContent(containerId, hasContent) {
