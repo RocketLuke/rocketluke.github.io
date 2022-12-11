@@ -10,6 +10,8 @@
         <!-- Custom JS/CSS -->
         <script src="js/index.js"></script>
         <link rel="stylesheet" href="pokefinderForRaids.css"></link>
+        <link rel="stylesheet" href="css/index.css"></link>
+        <link rel="stylesheet" href="css/typeColors.css"></link>
 
         <!-- select2.js/css -->
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -17,7 +19,7 @@
     </head>
     <body>
         <div class="header-container">
-            <div class="left-header-content-container">
+            <div class="first-header-content-container">
                 <div id="raid-helper-header-container">
                     <h2>Find a Pok&eacute;mon for your raid:</h2>
                     <div class="raid-pokemon-form-container">
@@ -333,9 +335,6 @@
                                 <img id="raid-pokemon-image" src="" width=120 height=120/>
                             </div>
                         </div>
-                        <div>
-                            <div id="raid-pokemon-warning-container">test</div>
-                        </div>
                     </div>
                 </div>
                 
@@ -647,14 +646,14 @@
                     </div>
                 </div>
             </div>
-            <div class="middle-header-content-container">
+            <div class="second-header-content-container">
                 <div class="website-title-container">
                     <h1>Pok&eacute;mon Raid Helper</h1>
                     <h2><a href="https://github.com/RocketLuke/rocketluke.github.io" target="_blank">Link to Github/Readme</a></h2>
                     <div>This web application uses Cookies to store information! Add-ons that disable Cookies will cause the page to not function properly.</div>
                 </div>
             </div>
-            <div class="right-header-content-container">
+            <div class="third-header-content-container">
                 <div class="navigation-container">
                     <button id="raid-helper-button">Find Pok&eacute;mon for Raid</button>
                     <button id="team-builder-button">Manage Team</button>
@@ -663,6 +662,9 @@
         </div>
 
         <div id="raid-helper-results-container">
+            <div>
+                <div id="raid-pokemon-warning-container"></div>
+            </div>
             <div class="results-display">
                 <div id="type-advantage-and-all-resistances-results-container-header">
                     <hr/>

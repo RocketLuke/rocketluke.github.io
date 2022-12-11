@@ -476,7 +476,7 @@ function resetResultsDisplays() {
     $('#some-resistances-results-container').empty();
     $('#no-resistances-results-container').empty();
     // Reset the warning box
-    $('#raid-pokemon-warning').empty();
+    $('#raid-pokemon-warning-container').empty();
 }
 
 function displayResultsElementIfItHasContent(containerId, hasContent) {
@@ -637,7 +637,7 @@ function deletePokemonCookie(pokemonId) {
     masterPokemonList["Annihilape"] = buildPokemon("Annihilape","Fighting","Ghost","https://www.serebii.net/scarletviolet/pokemon/small/1010.png","1010",["Vital Spirit","Inner Focus","Defiant"],"110","115","80","50","90","90");
     masterPokemonList["Appletun"] = buildPokemon("Appletun","Grass","Dragon","https://www.serebii.net/scarletviolet/pokemon/small/842.png","842",["Ripen","Gluttony","Thick Fat"],"110","85","80","100","80","30");
     masterPokemonList["Arboliva"] = buildPokemon("Arboliva","Grass","None","https://www.serebii.net/scarletviolet/pokemon/small/937.png","937",["Seed Sower","Harvest"],"78","69","90","125","109","39");
-    masterPokemonList["Arcanine"] = buildPokemon("Arcanine","Fire","None","https://www.serebii.net/scarletviolet/pokemon/small/59.png","59",["Intimidate","Flash Fire","Justified"],"90","110","80","100","80","95");
+    masterPokemonList["Arcanine"] = buildPokemon("Arcanine","Fire","None","https://www.serebii.net/scarletviolet/pokemon/small/059.png","059",["Intimidate","Flash Fire","Justified"],"90","110","80","100","80","95");
     masterPokemonList["Armarouge"] = buildPokemon("Armarouge","Fire","Psychic","https://www.serebii.net/scarletviolet/pokemon/small/1004.png","1004",["Flash Fire","Weak Armor"],"85","60","100","125","80","75");
     masterPokemonList["Avalugg"] = buildPokemon("Avalugg","Ice","None","https://www.serebii.net/scarletviolet/pokemon/small/713.png","713",["Own Tempo","Ice Body","Sturdy"],"95","117","184","44","46","28");
     masterPokemonList["Azumarill"] = buildPokemon("Azumarill","Water","Fairy","https://www.serebii.net/scarletviolet/pokemon/small/184.png","184",["Thick Fat","Huge Power","Sap Sipper"],"100","50","80","60","80","50");

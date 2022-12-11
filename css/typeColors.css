@@ -1,126 +1,9 @@
-body {
-    background-color: #171a21;
-    color: #b8b6b4;
-    margin: 0px;
-}
-hr {
-    height: 25px;
-    background-color: #333;
-    border-color: #333;
-    margin: 0;
-}
-h1, h2, h3 {
-    margin-top: 0px;
-}
-h3.result-tab {
-    background-color: #333;
-    padding-left: 12px;
-    padding-right: 12px;
-    width: fit-content;
-    height: 27px;
-    border-radius: 0 0 10px 0;
-}
-label {
-    display: inline-block;
-    width: 150px;
-}
-.header-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-.header-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    height: 250px;
-    padding: 15px;
-}
-.left-header-content-container, .middle-header-content-container, .right-header-content-container {
-    flex: 33%;
-    flex-grow: 1;
-}
-.middle-header-content-container {
-    text-align: center;
-    padding: 106px 0;
-}
-.right-header-content-container {
-    text-align: center;
-    padding: 95px 0;
-}
-#raid-helper-button, #team-builder-button {
-    width: 250px;
-    height: 60px;
-    font-size: 18px;
-}
-#team-builder-header-container, #team-builder-results-container, #raid-helper-button {
-    display: none;
-}
-.results-container, #current-team-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-bottom: 50px;
-    margin-left: 12px;
-    margin-right: 12px;
-}
-.result-container {
-    /*flex: 20%;*/
-    flex-grow: 0;
-    display: block;
-    background-color: #333;
-    padding: 12px;
-    margin: 24px;
-    border-radius: 10px;
-    width: 350px;
-}
-.result-field-container {
-    width: 350px;
-}
-.center {
-    text-align: center;
-}
-.new-pokemon-defensive-type-container span span span span b{
-    display:none !important;
-}
-.results-label {
-    width: 200px;
-}
-.results-value {
-    display: inline-block;
-    width: 150px;
-}
-
-
-
-
-
-
-/* 
-    Element Rules 
-*/
-/*
-    Class Rules
-*/
-.form-piece-container {
-    display: block;
-    margin-top: 10px;
-}
-.results-display {
-    display: none;
-}
-.input {
-    width: 92px;
-}
-.select {
-    width: 125px;
-    color: black !important;
-}
 .select2-results__option {
     color: black;
 }
-
-
+.select2-results__options {
+    max-height: 1000px !important;
+}
 
 /* Select2 Background & Text Color */
 .select2-results__option[id*='Bug'], .select2-selection__rendered[title*='Bug'] { 
@@ -181,7 +64,4 @@ label {
 }
 .select2-results__option[id*='Water'], .select2-selection__rendered[title*='Water'] { 
     background-color: #6890F0;
-}
-.select2-results__options {
-    max-height: 1000px !important;
 }
