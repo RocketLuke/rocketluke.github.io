@@ -377,7 +377,6 @@ function setResultDisplay(results, offensiveType1, offensiveType2, teraType, rai
         if (raidPokemonAbilities.includes('Defiant')) {
             const warningMessage = 'Warning! This Pok&eacute;mon may have the ability Defiant. When a Pok&eacute;mon with Defiant has its stats lowered, it gains two stages of attack, potentially bricking your raid!';
             $('#raid-pokemon-warning-container').append(warningMessage);
-            console.log('we set it');
         }
     }
 
