@@ -471,6 +471,11 @@ function addHTMLDisplayToResultsContainer(htmlDisplay, hasStrength, offensiveTyp
         offensiveType2NotWeak = true;
     }
 
+    console.log('offensiveType1Resisted: ' + offensiveType1Resisted);
+    console.log('offensiveType1Resisted: ' + offensiveType1Resisted);
+    console.log('offensiveType1NotWeak: ' + offensiveType1NotWeak);
+    console.log('offensiveType2NotWeak: ' + offensiveType2NotWeak);
+
     // Has Strength + All Resistances/Immunities
     if (hasStrength && offensiveType1Resisted && offensiveType2Resisted) {
         $('#type-advantage-and-all-resistances-results-container').append(htmlDisplay);
