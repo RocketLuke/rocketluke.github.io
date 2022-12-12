@@ -1,4 +1,4 @@
-import hello from "js/test.js"
+import hello from "./test.js"
 
 let typeMatrix = {};
 let pokemonIdList = [];
