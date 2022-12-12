@@ -414,7 +414,7 @@ function setResultDisplay(results, offensiveType1, offensiveType2, teraType, rai
         console.log('pokemonResult');
         console.log(pokemonResult);
         console.log('offensiveType1Status');
-        console.log(offensiveType1Status);
+        console.log(pokemonResult.offensiveType1Status);
 
         // 7 possible results:
         // 1. Is strong against tera type & resists everything
