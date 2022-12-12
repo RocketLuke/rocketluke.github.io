@@ -7,10 +7,6 @@ let masterPokemonList;
 
 $(document).ready(function(){
 
-    /*$.getScript("js/test.js", function() {
-        alert("Script loaded but not necessarily executed.");
-    });*/
-
     helloFunction();
 
     masterPokemonList = getMasterPokemonList();
@@ -370,11 +366,10 @@ function setStatus(currentStatus, newStatus) {
 function setResultDisplay(results, offensiveType1, offensiveType2, teraType, raidPokemonName) {
     resetResultsDisplays();
 
-    if (raidPokemonName != null) {
+    if (raidPokemonName != null && raidPokemonName != '') {
         const raidPokemon = masterPokemonList[raidPokemonName];
 
         const raidPokemonAbilities = raidPokemon.abilities;
-        console.log('here');
         if (raidPokemonAbilities.includes('Competitive')) {
             const warningMessage = 'Warning! This Pok&eacute;mon may have the ability Competitive. When a Pok&eacute;mon with Competitive has its stats lowered, it gains two stages of special attack, potentially bricking your raid!';
             $('#raid-pokemon-warning-container').append(warningMessage);
