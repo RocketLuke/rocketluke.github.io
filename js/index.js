@@ -414,7 +414,7 @@ function setResultDisplay(results, offensiveType1, offensiveType2, teraType, rai
         htmlDisplay += '<div class="result-field-container center"><img width="120" height="120" src="' + pokemonResult.imageURL + '"/></div>';
         htmlDisplay += '</div>';
 
-        addHTMLDisplayToResultsContainer(htmlDisplay, pokemonResult.offensiveType1Status, pokemonResult.offensiveType2Status, resultFlags);
+        addHTMLDisplayToResultsContainer(htmlDisplay, pokemonResult.hasStrength, pokemonResult.offensiveType1Status, pokemonResult.offensiveType2Status, resultFlags);
         /*if (pokemonResult.hasStrength && pokemonResult.offensiveType1Status.includes('Resisted') && (pokemonResult.offensiveType2Status.includes('Resisted') || offensiveType2 == 'None')) {
             $('#type-advantage-and-all-resistances-results-container').append(htmlDisplay);
             firstResultDisplayHasContent = true;
@@ -452,8 +452,7 @@ function setResultDisplay(results, offensiveType1, offensiveType2, teraType, rai
     $('.results-display').css('display', 'block');
 }
 
-function addHTMLDisplayToResultsContainer(htmlDisplay, offensiveType1Status, offensiveType2Status, resultFlags) {
-    const hasStrength = pokemonResult.hasStrength;
+function addHTMLDisplayToResultsContainer(htmlDisplay, hasStrength, offensiveType1Status, offensiveType2Status, resultFlags) {
     const offensiveType1Resisted = false;
     if (offensiveType1Status.includes('Resisted') || offensiveType1Status.includes('Immune')) {
         offensiveType1Resisted = true;
