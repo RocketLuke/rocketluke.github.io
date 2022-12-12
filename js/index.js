@@ -414,6 +414,7 @@ function setResultDisplay(results, offensiveType1, offensiveType2, teraType, rai
         htmlDisplay += '<div class="result-field-container center"><img width="120" height="120" src="' + pokemonResult.imageURL + '"/></div>';
         htmlDisplay += '</div>';
 
+        console.log('Pokemon: ' + pokemonResult.name);
         addHTMLDisplayToResultsContainer(htmlDisplay, pokemonResult.hasStrength, pokemonResult.offensiveType1Status, pokemonResult.offensiveType2Status, resultFlags);
         /*if (pokemonResult.hasStrength && pokemonResult.offensiveType1Status.includes('Resisted') && (pokemonResult.offensiveType2Status.includes('Resisted') || offensiveType2 == 'None')) {
             $('#type-advantage-and-all-resistances-results-container').append(htmlDisplay);
