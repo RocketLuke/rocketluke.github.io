@@ -1,3 +1,5 @@
+import hello from "./js/test.js"
+
 let typeMatrix = {};
 let pokemonIdList = [];
 let pokemonTeamList = [];
@@ -5,11 +7,11 @@ let masterPokemonList;
 
 $(document).ready(function(){
 
-    $.getScript("js/test.js", function() {
+    /*$.getScript("js/test.js", function() {
         alert("Script loaded but not necessarily executed.");
-    });
+    });*/
 
-
+    hello();
 
     masterPokemonList = getMasterPokemonList();
     setTypeMatrix();
