@@ -366,6 +366,9 @@ function setStatus(currentStatus, newStatus) {
     if (newStatus == 'Immune') {
         return 'Immune';
     }
+    console.log('we somehow made it here, how?');
+    console.log('currentStatus: ' + currentStatus);
+    console.log('newStatus: ' + newStatus);
 }
 
 /**
