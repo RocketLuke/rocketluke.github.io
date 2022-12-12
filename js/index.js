@@ -471,10 +471,12 @@ function addHTMLDisplayToResultsContainer(htmlDisplay, hasStrength, offensiveTyp
         offensiveType2NotWeak = true;
     }
 
+    console.log('offensiveType2NotWeak: ' + offensiveType2Status);
     console.log('offensiveType1Resisted: ' + offensiveType1Resisted);
     console.log('offensiveType1Resisted: ' + offensiveType1Resisted);
     console.log('offensiveType1NotWeak: ' + offensiveType1NotWeak);
     console.log('offensiveType2NotWeak: ' + offensiveType2NotWeak);
+    console.log('offensiveType2NotWeak: ' + offensiveType1Status);
 
     // Has Strength + All Resistances/Immunities
     if (hasStrength && offensiveType1Resisted && offensiveType2Resisted) {
