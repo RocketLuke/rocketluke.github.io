@@ -5,3 +5,4 @@ Issues:
 - indeedee doesn't get its psychic
 - immune is correctly viewed as a resistance
 - glalie doesn't get its ghost
+- Seperate JS methods into categorized files
