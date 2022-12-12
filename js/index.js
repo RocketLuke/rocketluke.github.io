@@ -262,6 +262,8 @@ function calculateEffectiveness(offensiveType1Label, offensiveType2Label, teraTy
         let hasStrength = false;
         let offensiveType1Status = 'Neutral';
         let offensiveType2Status = 'Neutral';
+        console.log('offensiveType1Status');
+        console.log(offensiveType1Status);
 
         let offensiveType1Object = typeMatrix[offensiveType1Label];
         let offensiveType2Object = typeMatrix[offensiveType2Label];
