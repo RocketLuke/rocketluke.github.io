@@ -386,13 +386,13 @@ function setResultDisplay(results, offensiveType1, offensiveType2, teraType, rai
         }
     }
 
-    firstResultDisplayHasContent = false;
-    secondResultDisplayHasContent = false;
-    thirdResultDisplayHasContent = false;
-    fourthResultDisplayHasContent = false;
-    fifthResultDisplayHasContent = false;
-    sixthResultDisplayHasContent = false;
-    atLeastOneResultDisplayHasContent = false;
+    let firstResultDisplayHasContent = false;
+    let secondResultDisplayHasContent = false;
+    let thirdResultDisplayHasContent = false;
+    let fourthResultDisplayHasContent = false;
+    let fifthResultDisplayHasContent = false;
+    let sixthResultDisplayHasContent = false;
+    let atLeastOneResultDisplayHasContent = false;
 
     // Loop through all our results, appending them onto our HTML page's results divs
     for (let i = 0; i < results.length; i++) {
