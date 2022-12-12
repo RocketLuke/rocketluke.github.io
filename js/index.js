@@ -5,6 +5,12 @@ let masterPokemonList;
 
 $(document).ready(function(){
 
+    $.getScript("test.js", function() {
+        alert("Script loaded but not necessarily executed.");
+    });
+
+
+
     masterPokemonList = getMasterPokemonList();
     setTypeMatrix();
 
