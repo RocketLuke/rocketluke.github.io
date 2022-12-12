@@ -1,4 +1,4 @@
-import hello from "./test.js"
+import {hello as helloFunction} from "./test.js"
 
 let typeMatrix = {};
 let pokemonIdList = [];
@@ -11,7 +11,7 @@ $(document).ready(function(){
         alert("Script loaded but not necessarily executed.");
     });*/
 
-    hello();
+    helloFunction();
 
     masterPokemonList = getMasterPokemonList();
     setTypeMatrix();
