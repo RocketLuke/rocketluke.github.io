@@ -461,8 +461,14 @@ function addHTMLDisplayToResultsContainer(htmlDisplay, hasStrength, offensiveTyp
     if (offensiveType2Status.includes('Resisted') || offensiveType2Status.includes('Immune') || offensiveType2Status.includes('N/A')) {
         offensiveType2Resisted = true;
     }
-    const offensiveType1NotWeak = !offensiveType1Status.includes('Weak');
-    const offensiveType2NotWeak = !offensiveType1Status.includes('Weak');
+    let offensiveType1NotWeak = false;
+    if (!offensiveType1Status.includes('Weak')) {
+        offensiveType1NotWeak = true;
+    }
+    let offensiveType2NotWeak = false;
+    if (!offensiveType1Status.includes('Weak')) {
+        offensiveType2NotWeak = true;
+    }
 
     // Has Strength + All Resistances/Immunities
     if (hasStrength && offensiveType1Resisted && offensiveType2Resisted) {
