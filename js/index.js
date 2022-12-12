@@ -280,12 +280,6 @@ function calculateEffectiveness(offensiveType1Label, offensiveType2Label, teraTy
             const pokemonDefensiveTypeLabel = defensiveTypeLabels[defensiveLoopCounter];
             const pokemonDefensiveTypeObject = typeMatrix[pokemonDefensiveTypeLabel];
 
-            if (pokemon.name == 'Corviknight') {
-                console.log('checking corviknight results for ' + pokemonDefensiveTypeLabel);
-                console.log(offensiveType1Status);
-                console.log(offensiveType2Status);
-            }
-
             // Weaknesses
             if (offensiveType1Object.strengths.includes(pokemonDefensiveTypeLabel)) {
                 offensiveType1Status = setStatus(offensiveType1Status, 'Weak');
@@ -311,12 +305,6 @@ function calculateEffectiveness(offensiveType1Label, offensiveType2Label, teraTy
             }
         }
 
-        if (pokemon.name == 'Corviknight') {
-            console.log('final corviknight results');
-            console.log(offensiveType1Status);
-            console.log(offensiveType2Status);
-        }
-
         const result = {};
         result.name = pokemon.name;
         result.hasStrength = hasStrength;
@@ -339,6 +327,9 @@ function calculateEffectiveness(offensiveType1Label, offensiveType2Label, teraTy
  * @returns                     How a pokemon fairs against another Pokemon after taking in new information (newStatus)
  */
 function setStatus(currentStatus, newStatus) {
+    if (currentStatus == 'Immune' || newStatus == 'Immune') {
+        return 'Immune';
+    }
     if (currentStatus == 'Neutral') {
         if (newStatus == 'Weak') {
             return 'Weak';
@@ -363,12 +354,6 @@ function setStatus(currentStatus, newStatus) {
             return 'Double Resisted';
         }
     }
-    if (newStatus == 'Immune') {
-        return 'Immune';
-    }
-    console.log('we somehow made it here, how?');
-    console.log('currentStatus: ' + currentStatus);
-    console.log('newStatus: ' + newStatus);
 }
 
 /**
