@@ -17,7 +17,7 @@
     background-color: #7038F8;
     color: white !important;
 }
-.select2-results__option[id='Electric'], .select2-selection__rendered[title='Electric'] { 
+.select2-results__option[id*='Electric'], .select2-selection__rendered[title='Electric'] { 
     background-color: #F8D030;
 }
 .select2-results__option[id='Fairy'], .select2-selection__rendered[title='Fairy'] { 
