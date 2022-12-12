@@ -409,6 +409,11 @@ function setResultDisplay(results, offensiveType1, offensiveType2, teraType, rai
         htmlDisplay += '<div class="result-field-container center"><img width="120" height="120" src="' + pokemonResult.imageURL + '"/></div>';
         htmlDisplay += '</div>';
 
+        console.log('pokemonResult.name');
+        console.log(pokemonResult.name);
+        console.log('offensiveType1Status');
+        console.log(offensiveType1Status);
+
         // 7 possible results:
         // 1. Is strong against tera type & resists everything
         // 2. Is strong against tera type & resists at least something with no weakness
