@@ -453,11 +453,11 @@ function setResultDisplay(results, offensiveType1, offensiveType2, teraType, rai
 }
 
 function addHTMLDisplayToResultsContainer(htmlDisplay, hasStrength, offensiveType1Status, offensiveType2Status, resultFlags) {
-    const offensiveType1Resisted = false;
+    let offensiveType1Resisted = false;
     if (offensiveType1Status.includes('Resisted') || offensiveType1Status.includes('Immune')) {
         offensiveType1Resisted = true;
     }
-    const offensiveType2Resisted = false;
+    let offensiveType2Resisted = false;
     if (offensiveType2Status.includes('Resisted') || offensiveType2Status.includes('Immune') || offensiveType2Status.includes('N/A')) {
         offensiveType2Resisted = true;
     }
