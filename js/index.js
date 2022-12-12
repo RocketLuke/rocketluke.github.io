@@ -414,33 +414,7 @@ function setResultDisplay(results, offensiveType1, offensiveType2, teraType, rai
         htmlDisplay += '<div class="result-field-container center"><img width="120" height="120" src="' + pokemonResult.imageURL + '"/></div>';
         htmlDisplay += '</div>';
 
-        console.log('Pokemon: ' + pokemonResult.name);
         addHTMLDisplayToResultsContainer(htmlDisplay, pokemonResult.hasStrength, pokemonResult.offensiveType1Status, pokemonResult.offensiveType2Status, resultFlags);
-        /*if (pokemonResult.hasStrength && pokemonResult.offensiveType1Status.includes('Resisted') && (pokemonResult.offensiveType2Status.includes('Resisted') || offensiveType2 == 'None')) {
-            $('#type-advantage-and-all-resistances-results-container').append(htmlDisplay);
-            firstResultDisplayHasContent = true;
-            atLeastOneResultDisplayHasContent = true;
-        } else if (pokemonResult.hasStrength && !pokemonResult.offensiveType1Status.includes('Weak') && !pokemonResult.offensiveType2Status.includes('Weak') && (pokemonResult.offensiveType1Status.includes('Resisted') || pokemonResult.offensiveType2Status.includes('Resisted') )) {
-            $('#type-advantage-and-some-resistances-results-container').append(htmlDisplay);
-            secondResultDisplayHasContent = true;
-            atLeastOneResultDisplayHasContent = true;
-        } else if (pokemonResult.hasStrength && !pokemonResult.offensiveType1Status.includes('Weak') && !pokemonResult.offensiveType2Status.includes('Weak')) {
-            $('#type-advantage-and-no-resistances-results-container').append(htmlDisplay);
-            thirdResultDisplayHasContent = true;
-            atLeastOneResultDisplayHasContent = true;
-        } else if (pokemonResult.offensiveType1Status.includes('Resisted') && (pokemonResult.offensiveType2Status.includes('Resisted') || offensiveType2 == 'None')) {
-            $('#all-resistances-results-container').append(htmlDisplay);
-            fourthResultDisplayHasContent = true;
-            atLeastOneResultDisplayHasContent = true;
-        } else if (!pokemonResult.offensiveType1Status.includes('Weak') && !pokemonResult.offensiveType2Status.includes('Weak') && (pokemonResult.offensiveType1Status.includes('Resisted') || pokemonResult.offensiveType2Status.includes('Resisted') )) {
-            $('#some-resistances-results-container').append(htmlDisplay);
-            fifthResultDisplayHasContent = true;
-            atLeastOneResultDisplayHasContent = true;
-        } else if (!pokemonResult.offensiveType1Status.includes('Weak') && !pokemonResult.offensiveType2Status.includes('Weak')) {
-            $('#no-resistances-results-container').append(htmlDisplay);
-            sixthResultDisplayHasContent = true;
-            atLeastOneResultDisplayHasContent = true;
-        }*/
     }
 
     displayResultsElementIfItHasContent('#type-advantage-and-all-resistances-results-container', resultFlags.firstResultDisplayHasContent);
@@ -463,20 +437,13 @@ function addHTMLDisplayToResultsContainer(htmlDisplay, hasStrength, offensiveTyp
         offensiveType2Resisted = true;
     }
     let offensiveType1NotWeak = false;
-    if (offensiveType1Status.includes('Weak') == false) {
+    if (!offensiveType1Status.includes('Weak')) {
         offensiveType1NotWeak = true;
     }
     let offensiveType2NotWeak = false;
-    if (offensiveType1Status.includes('Weak') == false) {
+    if (!offensiveType2Status.includes('Weak')) {
         offensiveType2NotWeak = true;
     }
-
-    console.log('offensiveType1Status: ' + offensiveType1Status);
-    console.log('offensiveType2NotWeak: ' + offensiveType2Status);
-    console.log('offensiveType1Resisted: ' + offensiveType1Resisted);
-    console.log('offensiveType2Resisted: ' + offensiveType2Resisted);
-    console.log('offensiveType1NotWeak: ' + offensiveType1NotWeak);
-    console.log('offensiveType2NotWeak: ' + offensiveType2NotWeak);
 
     // Has Strength + All Resistances/Immunities
     if (hasStrength && offensiveType1Resisted && offensiveType2Resisted) {
