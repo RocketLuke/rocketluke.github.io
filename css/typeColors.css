@@ -6,62 +6,62 @@
 }
 
 /* Select2 Background & Text Color */
-.select2-results__option[id*='Bug'], .select2-selection__rendered[title*='Bug'] { 
+.select2-results__option[id='Bug'], .select2-selection__rendered[title*='Bug'] { 
     background-color: #A8B820;
 }
-.select2-results__option[id*='Dark'], .select2-selection__rendered[title*='Dark'] { 
+.select2-results__option[id='Dark'], .select2-selection__rendered[title*='Dark'] { 
     background-color: #705848;
     color: white !important;
 }
-.select2-results__option[id*='Dragon'], .select2-selection__rendered[title*='Dragon'] { 
+.select2-results__option[id='Dragon'], .select2-selection__rendered[title*='Dragon'] { 
     background-color: #7038F8;
     color: white !important;
 }
-.select2-results__option[id*='Electric'], .select2-selection__rendered[title*='Electric'] { 
+.select2-results__option[id='Electric'], .select2-selection__rendered[title*='Electric'] { 
     background-color: #F8D030;
 }
-.select2-results__option[id*='Fairy'], .select2-selection__rendered[title*='Fairy'] { 
+.select2-results__option[id='Fairy'], .select2-selection__rendered[title*='Fairy'] { 
     background-color: #EE99AC;
 }
-.select2-results__option[id*='Fighting'], .select2-selection__rendered[title*='Fighting'] { 
+.select2-results__option[id='Fighting'], .select2-selection__rendered[title*='Fighting'] { 
     background-color: #C03028;
     color: white !important;
 }
-.select2-results__option[id*='Fire'], .select2-selection__rendered[title*='Fire'] { 
+.select2-results__option[id='Fire'], .select2-selection__rendered[title*='Fire'] { 
     background-color: #F08030;
 }
-.select2-results__option[id*='Flying'], .select2-selection__rendered[title*='Flying'] { 
+.select2-results__option[id='Flying'], .select2-selection__rendered[title*='Flying'] { 
     background-color: #A890F0;
 }
-.select2-results__option[id*='Ghost'], .select2-selection__rendered[title*='Ghost'] { 
+.select2-results__option[id='Ghost'], .select2-selection__rendered[title*='Ghost'] { 
     background-color: #705898;
     color: white !important;
 }
-.select2-results__option[id*='Grass'], .select2-selection__rendered[title*='Grass'] { 
+.select2-results__option[id='Grass'], .select2-selection__rendered[title*='Grass'] { 
     background-color: #78C850;
 }
-.select2-results__option[id*='Ground'], .select2-selection__rendered[title*='Ground'] { 
+.select2-results__option[id='Ground'], .select2-selection__rendered[title*='Ground'] { 
     background-color: #E0C068;
 }
-.select2-results__option[id*='Ice'], .select2-selection__rendered[title*='Ice'] { 
+.select2-results__option[id='Ice'], .select2-selection__rendered[title*='Ice'] { 
     background-color: #98D8D8;
 }
-.select2-results__option[id*='Normal'], .select2-selection__rendered[title*='Normal'] { 
+.select2-results__option[id='Normal'], .select2-selection__rendered[title*='Normal'] { 
     background-color: #A8A878;
 }
-.select2-results__option[id*='Poison'], .select2-selection__rendered[title*='Poison'] { 
+.select2-results__option[id='Poison'], .select2-selection__rendered[title*='Poison'] { 
     background-color: #A040A0;
     color: white !important;
 }
-.select2-results__option[id*='Psychic'], .select2-selection__rendered[title*='Psychic'] { 
+.select2-results__option[id='Psychic'], .select2-selection__rendered[title*='Psychic'] { 
     background-color: #F85888;
 }
-.select2-results__option[id*='Rock'], .select2-selection__rendered[title*='Rock'] { 
+.select2-results__option[id='Rock'], .select2-selection__rendered[title*='Rock'] { 
     background-color: #B8A038;
 }
-.select2-results__option[id*='Steel'], .select2-selection__rendered[title*='Steel'] { 
+.select2-results__option[id='Steel'], .select2-selection__rendered[title*='Steel'] { 
     background-color: #B8B8D0;
 }
-.select2-results__option[id*='Water'], .select2-selection__rendered[title*='Water'] { 
+.select2-results__option[id='Water'], .select2-selection__rendered[title*='Water'] { 
     background-color: #6890F0;
 }
