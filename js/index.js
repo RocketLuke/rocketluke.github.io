@@ -5,7 +5,7 @@ let masterPokemonList;
 
 $(document).ready(function(){
 
-    $.getScript("test.js", function() {
+    $.getScript("js/test.js", function() {
         alert("Script loaded but not necessarily executed.");
     });
 
