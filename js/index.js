@@ -463,20 +463,20 @@ function addHTMLDisplayToResultsContainer(htmlDisplay, hasStrength, offensiveTyp
         offensiveType2Resisted = true;
     }
     let offensiveType1NotWeak = false;
-    if (!offensiveType1Status.includes('Weak')) {
+    if (offensiveType1Status.includes('Weak') == false) {
         offensiveType1NotWeak = true;
     }
     let offensiveType2NotWeak = false;
-    if (!offensiveType1Status.includes('Weak')) {
+    if (offensiveType1Status.includes('Weak') == false) {
         offensiveType2NotWeak = true;
     }
 
+    console.log('offensiveType1Status: ' + offensiveType1Status);
     console.log('offensiveType2NotWeak: ' + offensiveType2Status);
     console.log('offensiveType1Resisted: ' + offensiveType1Resisted);
-    console.log('offensiveType1Resisted: ' + offensiveType1Resisted);
+    console.log('offensiveType2Resisted: ' + offensiveType2Resisted);
     console.log('offensiveType1NotWeak: ' + offensiveType1NotWeak);
     console.log('offensiveType2NotWeak: ' + offensiveType2NotWeak);
-    console.log('offensiveType2NotWeak: ' + offensiveType1Status);
 
     // Has Strength + All Resistances/Immunities
     if (hasStrength && offensiveType1Resisted && offensiveType2Resisted) {
