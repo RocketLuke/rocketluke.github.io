@@ -303,6 +303,10 @@ function calculateEffectiveness(offensiveType1Label, offensiveType2Label, teraTy
             if (pokemonDefensiveTypeObject.immunities.includes(offensiveType2Label)) {
                 offensiveType2Status = setStatus(offensiveType2Status, 'Immune');
             }
+
+            if (offensiveType2Label == 'None') {
+                offensiveType2Status = 'N/A';
+            }
         }
 
         const result = {};
@@ -380,13 +384,14 @@ function setResultDisplay(results, offensiveType1, offensiveType2, teraType, rai
         }
     }
 
-    let firstResultDisplayHasContent = false;
-    let secondResultDisplayHasContent = false;
-    let thirdResultDisplayHasContent = false;
-    let fourthResultDisplayHasContent = false;
-    let fifthResultDisplayHasContent = false;
-    let sixthResultDisplayHasContent = false;
-    let atLeastOneResultDisplayHasContent = false;
+    const resultFlags = {};
+    resultFlags.firstResultDisplayHasContent = false;
+    resultFlags.secondResultDisplayHasContent = false;
+    resultFlags.thirdResultDisplayHasContent = false;
+    resultFlags.fourthResultDisplayHasContent = false;
+    resultFlags.fifthResultDisplayHasContent = false;
+    resultFlags.sixthResultDisplayHasContent = false;
+    resultFlags.atLeastOneResultDisplayHasContent = false;
 
     // Loop through all our results, appending them onto our HTML page's results divs
     for (let i = 0; i < results.length; i++) {
@@ -409,15 +414,8 @@ function setResultDisplay(results, offensiveType1, offensiveType2, teraType, rai
         htmlDisplay += '<div class="result-field-container center"><img width="120" height="120" src="' + pokemonResult.imageURL + '"/></div>';
         htmlDisplay += '</div>';
 
-        // 7 possible results:
-        // 1. Is strong against tera type & resists everything
-        // 2. Is strong against tera type & resists at least something with no weakness
-        // 3. Is strong against tera type and has no weaknesses and no resistances
-        // 4. Not strong against tera type & resists everything
-        // 5. Not strong against tera type & resists at least something with no weakness
-        // 6. Not strong against tera type & no weaknesses and no resistances
-        // 7. If one of the 6 results aren't met, we won't display it
-        if (pokemonResult.hasStrength && pokemonResult.offensiveType1Status.includes('Resisted') && (pokemonResult.offensiveType2Status.includes('Resisted') || offensiveType2 == 'None')) {
+        addHTMLDisplayToResultsContainer(htmlDisplay, pokemonResult.offensiveType1Status, pokemonResult.offensiveType2Status, resultFlags);
+        /*if (pokemonResult.hasStrength && pokemonResult.offensiveType1Status.includes('Resisted') && (pokemonResult.offensiveType2Status.includes('Resisted') || offensiveType2 == 'None')) {
             $('#type-advantage-and-all-resistances-results-container').append(htmlDisplay);
             firstResultDisplayHasContent = true;
             atLeastOneResultDisplayHasContent = true;
@@ -441,17 +439,68 @@ function setResultDisplay(results, offensiveType1, offensiveType2, teraType, rai
             $('#no-resistances-results-container').append(htmlDisplay);
             sixthResultDisplayHasContent = true;
             atLeastOneResultDisplayHasContent = true;
-        }
+        }*/
     }
 
-    displayResultsElementIfItHasContent('#type-advantage-and-all-resistances-results-container', firstResultDisplayHasContent);
-    displayResultsElementIfItHasContent('#type-advantage-and-some-resistances-results-container', secondResultDisplayHasContent);
-    displayResultsElementIfItHasContent('#type-advantage-and-no-resistances-results-container', thirdResultDisplayHasContent);
-    displayResultsElementIfItHasContent('#all-resistances-results-container', fourthResultDisplayHasContent);
-    displayResultsElementIfItHasContent('#some-resistances-results-container', fifthResultDisplayHasContent);
-    displayResultsElementIfItHasContent('#no-resistances-results-container', sixthResultDisplayHasContent);
+    displayResultsElementIfItHasContent('#type-advantage-and-all-resistances-results-container', resultFlags.firstResultDisplayHasContent);
+    displayResultsElementIfItHasContent('#type-advantage-and-some-resistances-results-container', resultFlags.secondResultDisplayHasContent);
+    displayResultsElementIfItHasContent('#type-advantage-and-no-resistances-results-container', resultFlags.thirdResultDisplayHasContent);
+    displayResultsElementIfItHasContent('#all-resistances-results-container', resultFlags.fourthResultDisplayHasContent);
+    displayResultsElementIfItHasContent('#some-resistances-results-container', resultFlags.fifthResultDisplayHasContent);
+    displayResultsElementIfItHasContent('#no-resistances-results-container', resultFlags.sixthResultDisplayHasContent);
 
     $('.results-display').css('display', 'block');
+}
+
+function addHTMLDisplayToResultsContainer(htmlDisplay, offensiveType1Status, offensiveType2Status, resultFlags) {
+    const hasStrength = pokemonResult.hasStrength;
+    const offensiveType1Resisted = false;
+    if (offensiveType1Status.includes('Resisted') || offensiveType1Status.includes('Immune')) {
+        offensiveType1Resisted = true;
+    }
+    const offensiveType2Resisted = false;
+    if (offensiveType2Status.includes('Resisted') || offensiveType2Status.includes('Immune') || offensiveType2Status.includes('N/A')) {
+        offensiveType2Resisted = true;
+    }
+    const offensiveType1NotWeak = !offensiveType1Status.includes('Weak');
+    const offensiveType2NotWeak = !offensiveType1Status.includes('Weak');
+
+    // Has Strength + All Resistances/Immunities
+    if (hasStrength && offensiveType1Resisted && offensiveType2Resisted) {
+        $('#type-advantage-and-all-resistances-results-container').append(htmlDisplay);
+        resultFlags.firstResultDisplayHasContent = true;
+        resultFlags.atLeastOneResultDisplayHasContent = true;
+    }
+    // Has Strength + Some Resistance/Immunities, no Weaknesses
+    if (hasStrength && offensiveType1NotWeak && offensiveType2NotWeak && (offensiveType1Resisted || offensiveType2Resisted)) {
+        $('#type-advantage-and-some-resistances-results-container').append(htmlDisplay);
+        resultFlags.secondResultDisplayHasContent = true;
+        resultFlags.atLeastOneResultDisplayHasContent = true;
+    }
+    // Has Strength + No Weaknesses
+    if (hasStrength && offensiveType1NotWeak && offensiveType2NotWeak) {
+        $('#type-advantage-and-no-resistances-results-container').append(htmlDisplay);
+        resultFlags.thirdResultDisplayHasContent = true;
+        resultFlags.atLeastOneResultDisplayHasContent = true;
+    }
+    // No Strength + All Resistances/Immunities
+    if (offensiveType1Resisted && offensiveType2Resisted) {
+        $('#all-resistances-results-container').append(htmlDisplay);
+        resultFlags.fourthResultDisplayHasContent = true;
+        resultFlags.atLeastOneResultDisplayHasContent = true;
+    }
+    // No Strength + Some Resistances/Immunities, no Weaknesses
+    if (offensiveType1NotWeak && offensiveType2NotWeak && (offensiveType1Resisted || offensiveType2Resisted)) {
+        $('#some-resistances-results-container').append(htmlDisplay);
+        resultFlags.fifthResultDisplayHasContent = true;
+        resultFlags.atLeastOneResultDisplayHasContent = true;
+    }
+    // No Strength + No Weaknesses
+    if (offensiveType1NotWeak && offensiveType2NotWeak) {
+        $('#no-resistances-results-container').append(htmlDisplay);
+        resultFlags.sixthResultDisplayHasContent = true;
+        resultFlags.atLeastOneResultDisplayHasContent = true;
+    }
 }
 
 function resetResultsDisplays() {
