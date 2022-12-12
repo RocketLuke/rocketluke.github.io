@@ -262,8 +262,6 @@ function calculateEffectiveness(offensiveType1Label, offensiveType2Label, teraTy
         let hasStrength = false;
         let offensiveType1Status = 'Neutral';
         let offensiveType2Status = 'Neutral';
-        console.log('offensiveType1Status');
-        console.log(offensiveType1Status);
 
         let offensiveType1Object = typeMatrix[offensiveType1Label];
         let offensiveType2Object = typeMatrix[offensiveType2Label];
@@ -281,6 +279,12 @@ function calculateEffectiveness(offensiveType1Label, offensiveType2Label, teraTy
         for (let defensiveLoopCounter = 0; defensiveLoopCounter < defensiveTypeLabels.length; defensiveLoopCounter++) {
             const pokemonDefensiveTypeLabel = defensiveTypeLabels[defensiveLoopCounter];
             const pokemonDefensiveTypeObject = typeMatrix[pokemonDefensiveTypeLabel];
+
+            if (pokemon.name == 'Corviknight') {
+                console.log('checking corviknight results for ' + pokemonDefensiveTypeLabel);
+                console.log(offensiveType1Status);
+                console.log(offensiveType2Status);
+            }
 
             // Weaknesses
             if (offensiveType1Object.strengths.includes(pokemonDefensiveTypeLabel)) {
@@ -305,6 +309,12 @@ function calculateEffectiveness(offensiveType1Label, offensiveType2Label, teraTy
             if (pokemonDefensiveTypeObject.immunities.includes(offensiveType2Label)) {
                 offensiveType2Status = setStatus(offensiveType2Status, 'Immune');
             }
+        }
+
+        if (pokemon.name == 'Corviknight') {
+            console.log('final corviknight results');
+            console.log(offensiveType1Status);
+            console.log(offensiveType2Status);
         }
 
         const result = {};
@@ -410,11 +420,6 @@ function setResultDisplay(results, offensiveType1, offensiveType2, teraType, rai
         }
         htmlDisplay += '<div class="result-field-container center"><img width="120" height="120" src="' + pokemonResult.imageURL + '"/></div>';
         htmlDisplay += '</div>';
-
-        console.log('pokemonResult');
-        console.log(pokemonResult);
-        console.log('offensiveType1Status');
-        console.log(pokemonResult.offensiveType1Status);
 
         // 7 possible results:
         // 1. Is strong against tera type & resists everything
