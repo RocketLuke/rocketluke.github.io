@@ -116,7 +116,7 @@ label {
     height: 60px;
     font-size: 18px;
 }
-#team-builder-header-container, #team-builder-results-container, #raid-helper-button {
+#team-builder-header-container, #team-builder-results-container, #raid-helper-button, #raid-pokemon-image {
     display: none;
 }
 #raid-pokemon-warning-container {

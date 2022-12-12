@@ -73,13 +73,13 @@ $(document).ready(function(){
         $('#team-builder-container').css('display', 'block');
     });
 
-    $('#raid-pokemon-name').on('select2:select', function (e) {
-        var pokemon = masterPokemonList[e.params.data.id];
+    // Set the current default raid pokemon image/types
+    const currentRaidPokemonName = $('#raid-pokemon-name').find(':selected')[0].value;
+    setRaidPokemonElements(currentRaidPokemonName);
 
-        // Set the raid pokemon's type fields
-        $('#raid-pokemon-offensive-type-1').val(pokemon.type1).trigger('change');
-        $('#raid-pokemon-offensive-type-2').val(pokemon.type2).trigger('change');
-        $('#raid-pokemon-image').attr('src', pokemon.imageURL);
+    $('#raid-pokemon-name').on('select2:select', function (e) {
+        const currentRaidPokemonName = $('#raid-pokemon-name').find(':selected')[0].value;
+        setRaidPokemonElements(currentRaidPokemonName);
     });
 
     $('#new-pokemon-name').on('select2:select', function (e) {
@@ -884,4 +884,14 @@ function buildPokemon(name, type1, type2, imageURL, serebiiNumber, abilities, ba
     newPokemon.baseSpecialDefense = baseSpecialDefense;
     newPokemon.baseSpeed = baseSpeed;
     return newPokemon;
+}
+
+function setRaidPokemonElements(raidPokemonName) {
+    var pokemon = masterPokemonList[raidPokemonName];
+    if (pokemon != null) {
+        $('#raid-pokemon-offensive-type-1').val(pokemon.type1).trigger('change');
+        $('#raid-pokemon-offensive-type-2').val(pokemon.type2).trigger('change');
+        $('#raid-pokemon-image').attr('src', pokemon.imageURL);
+        $('#raid-pokemon-image').css('display', 'inline')
+    }
 }
